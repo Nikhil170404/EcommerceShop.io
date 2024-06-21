@@ -19,11 +19,15 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 // CORS middleware
-app.use(cors({
-  origin: 'https://frontend-or4y5rjna-nikhil170404s-projects.vercel.app',
-  methods: ['GET', 'POST'], // Allow only GET and POST requests, adjust as necessary
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow additional headers
-}));
+// Example middleware for enabling CORS in Express
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend-omega-beryl-88.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 
 // Body parser
 app.use(express.json());
